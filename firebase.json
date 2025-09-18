@@ -1,0 +1,28 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "metter-a4cae",
+          "appId": "1:992963771447:android:b1527da18069223a0313b2",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "metter-a4cae",
+          "configurations": {
+            "android": "1:992963771447:android:b1527da18069223a0313b2",
+            "ios": "1:992963771447:ios:d30fe1c5fb184acf0313b2"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "eur3",
+    "rules": "firebase/firestore.rules",
+    "indexes": "firebase/firestore.indexes.json"
+  }
+}
