@@ -33,6 +33,7 @@ class _MetterAppState extends State<MetterApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Metter",
+      theme: ThemeData(colorSchemeSeed: Colors.green),
       initialRoute: Routes.root,
       onGenerateRoute: MetterRouter.router.generator,
       debugShowCheckedModeBanner: false,
