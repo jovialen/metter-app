@@ -19,12 +19,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth.instance.authStateChanges().listen((user) {
-      if (user != null) {
-        MetterRouter.router.pop(context);
-      }
-    });
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -79,9 +73,11 @@ class _RegisterPageState extends State<RegisterPage> {
         password: password,
       );
     } catch (exception) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(exception.toString())));
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(exception.toString())));
+      }
     }
   }
 }

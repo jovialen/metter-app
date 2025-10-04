@@ -1,4 +1,3 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:metter/config/routes/config.dart';
@@ -44,11 +43,7 @@ class AuthPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: FilledButton(
-                  onPressed: () => MetterRouter.router.navigateTo(
-                    context,
-                    Routes.login,
-                    transition: TransitionType.material,
-                  ),
+                  onPressed: () => MetterRouter.router.push(Routes.login),
                   style: ButtonStyle(),
                   child: const Text("Log in"),
                 ),
@@ -56,11 +51,7 @@ class AuthPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: FilledButton.tonal(
-                  onPressed: () => MetterRouter.router.navigateTo(
-                    context,
-                    Routes.register,
-                    transition: TransitionType.material,
-                  ),
+                  onPressed: () => MetterRouter.router.push(Routes.register),
                   child: const Text("Register"),
                 ),
               ),

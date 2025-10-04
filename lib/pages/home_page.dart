@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:metter/config/routes/router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

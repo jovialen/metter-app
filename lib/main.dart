@@ -1,8 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:metter/config/firebase/firebase_options.dart';
-import 'package:metter/config/routes/config.dart';
 import 'package:metter/config/routes/router.dart';
 
 void main() async {
@@ -10,6 +9,11 @@ void main() async {
 
   // Initialize firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Refresh the page on auth state changes
+  FirebaseAuth.instance.authStateChanges().listen((user) {
+    MetterRouter.router.refresh();
+  });
 
   runApp(const MetterApp());
 }
@@ -22,20 +26,12 @@ class MetterApp extends StatefulWidget {
 }
 
 class _MetterAppState extends State<MetterApp> {
-  _MetterAppState() {
-    // Create app router, and make it globally available.
-    final router = FluroRouter();
-    Routes.configureRoutes(router);
-    MetterRouter.router = router;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: "Metter",
       theme: ThemeData(colorSchemeSeed: Colors.green),
-      initialRoute: Routes.root,
-      onGenerateRoute: MetterRouter.router.generator,
+      routerConfig: MetterRouter.router,
       debugShowCheckedModeBanner: false,
     );
   }
